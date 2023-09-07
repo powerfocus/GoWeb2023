@@ -31,7 +31,7 @@
         <entry key="file://$PROJECT_DIR$/controller/IndexController.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1693881557899" />
+              <option name="lastModified" value="1694060074465" />
               <option name="schema">
                 <list>
                   <option value="IndexController" />
@@ -43,14 +43,14 @@
         <entry key="file://$PROJECT_DIR$/core/funs.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1694006116162" />
+              <option name="lastModified" value="1694060074468" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/core/jwt.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1693993610004" />
+              <option name="lastModified" value="1694060074469" />
               <option name="schema">
                 <list>
                   <option value="Jwt" />
@@ -62,42 +62,42 @@
         <entry key="file://$PROJECT_DIR$/core/jwt_test.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1694004644959" />
+              <option name="lastModified" value="1694060074470" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/core/server.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1693891638661" />
+              <option name="lastModified" value="1694060074476" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/core/strUtil.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1694004535900" />
+              <option name="lastModified" value="1694060074477" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/log/log.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1693843262088" />
+              <option name="lastModified" value="1694060074481" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/main.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1693840662015" />
+              <option name="lastModified" value="1694060074482" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/mid/indexMid.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1693843295579" />
+              <option name="lastModified" value="1694060074483" />
               <option name="schema">
                 <list>
                   <option value="IndexMid" />
@@ -109,7 +109,7 @@
         <entry key="file://$PROJECT_DIR$/routes/route.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1693987728969" />
+              <option name="lastModified" value="1694060074488" />
             </ScannedPath>
           </value>
         </entry>
