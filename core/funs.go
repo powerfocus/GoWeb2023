@@ -1,5 +1,7 @@
 package core
 
+import "gweb/log"
+
 type CommonFunc func()
 type OneFunc func(arg any)
 type MultiFunc func(args ...any)
@@ -17,4 +19,22 @@ func Try(f OneFunc) {
 		err := recover()
 		f(err)
 	})
+}
+
+func ErrPanic(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
+func ErrPanicMsg(err error, msg string) {
+	if err != nil {
+		panic(msg)
+	}
+}
+
+func ErrMsg(err error, msg string) {
+	if err != nil {
+		log.Println(msg, " ", err.Error())
+	}
 }

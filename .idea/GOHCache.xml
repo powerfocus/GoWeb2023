@@ -40,10 +40,24 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/core/db.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1694155162339" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/core/db_test.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1694165245219" />
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/core/funs.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1694060074468" />
+              <option name="lastModified" value="1694161303818" />
             </ScannedPath>
           </value>
         </entry>
@@ -87,6 +101,13 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/m.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1694158269510" />
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/main.go">
           <value>
             <ScannedPath>
@@ -106,6 +127,13 @@
             </ScannedPath>
           </value>
         </entry>
+        <entry key="file://$PROJECT_DIR$/module/employees.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1694154226191" />
+            </ScannedPath>
+          </value>
+        </entry>
         <entry key="file://$PROJECT_DIR$/routes/route.go">
           <value>
             <ScannedPath>
@@ -122,6 +150,6 @@
         <entry key="jwt" value="Jwt" />
       </map>
     </option>
-    <option name="lastTimeChecked" value="1694045343097" />
+    <option name="lastTimeChecked" value="1694140428572" />
   </component>
 </project>
