@@ -129,7 +129,7 @@ func RGetMapVal(mp map[string]any, key string) []any {
 }
 
 func CleanMap[K string | int, V any](mp map[K]V) {
-	for k, _ := range mp {
+	for k := range mp {
 		delete(mp, k)
 	}
 }
