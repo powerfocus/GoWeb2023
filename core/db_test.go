@@ -3,10 +3,12 @@ package core
 import (
 	"bufio"
 	"gopkg.in/yaml.v3"
+	"gweb/log"
 	"io"
 	"os"
 	"path/filepath"
 	"reflect"
+	"strings"
 	"testing"
 )
 
@@ -51,9 +53,7 @@ func TestOpen(t *testing.T) {
 		t.Logf("%v", "defer操作...")
 		err = file.Close()
 	})
-	if err != nil {
-		panic(err)
-	}
+	ErrPanic(err)
 	r := bufio.NewReader(file)
 	buf := make([]byte, 128)
 	for {
@@ -69,6 +69,7 @@ func TestYaml(t *testing.T) {
 	f, err := os.Open("C:\\Users\\Administrator\\GolandProjects\\gweb\\application.yml")
 	ErrMsg(err, "打开文件是出现异常")
 	defer func(f *os.File) {
+		log.Println("defer操作")
 		err := f.Close()
 		if err != nil {
 			panic(err)
@@ -83,18 +84,79 @@ func TestYaml(t *testing.T) {
 	mp := make(map[string]interface{})
 	err = yaml.Unmarshal(data, &mp)
 	ErrPanic(err)
-	/*if v, ok := mp["goWeb"]; ok {
-		t.Logf("%v, %v", reflect.TypeOf(v), v)
-	}*/
-	for k, v := range mp {
+	/*for k, v := range mp {
 		t.Logf("%v -> %v", k, v)
-		for k, v := range v.(map[string]interface{}) {
-			t.Logf("%v -> %v", k, v)
-			if reflect.TypeOf(v) == reflect.TypeOf(map[string]interface{}{}) {
-				for k, v := range v.(map[string]interface{}) {
-					t.Logf("%v -> %v", k, v)
+		if reflect.TypeOf(v) == reflect.TypeOf(map[string]interface{}{}) {
+			for k, v := range v.(map[string]interface{}) {
+				t.Logf("%v -> %v", k, v)
+				if reflect.TypeOf(v) == reflect.TypeOf(map[string]interface{}{}) {
+					for k, v := range v.(map[string]interface{}) {
+						t.Logf("||%v -> %v", k, v)
+					}
 				}
 			}
+		}
+	}*/
+	/*t.Logf("%v", strings.Repeat("-", 20))
+	IteratorMap(mp)
+	t.Logf("%v", strings.Repeat("-", 20))*/
+	url := StringKeyToVal(mp, "url")
+	for k, v := range url {
+		t.Logf("%v: %v\n", k, v)
+	}
+	t.Logf("%v", strings.Repeat("-", 20))
+	Reset()
+	host := StringKeyToVal(mp, "host")
+	for k, v := range host {
+		t.Logf("%v: %v\n", k, v)
+	}
+}
+
+func TestType(t *testing.T) {
+	b := reflect.TypeOf(map[string]any{}) == reflect.TypeOf(map[string]any{})
+	t.Logf("%v", b)
+	t.Logf("%v, %v", reflect.TypeOf(map[string]any{}).Kind(), reflect.TypeOf(map[string]any{}).Kind())
+}
+
+func TestMap(t *testing.T) {
+	m := map[string]any{}
+
+	l1 := map[string]any{}
+	l1["name"] = "win10"
+	l1["address"] = "localhost"
+
+	l2 := map[string]any{}
+	l2["username"] = "nacos"
+	l2["password"] = "123"
+	l1["l2"] = l2
+
+	l3 := map[string]any{}
+	l3["address"] = "127.0.0.1"
+	l3["port"] = "8080"
+
+	m["l1"] = l1
+	m["l2"] = l2
+	m["l3"] = l3
+
+	a := m["l1"]
+	t.Logf("%v", strings.Repeat("-", 20))
+	t.Logf("%v type: %v, kind: %v", a, reflect.TypeOf(a), reflect.TypeOf(a).Kind())
+	t.Logf("name: %v, String: %v", reflect.TypeOf(a).Name(), reflect.TypeOf(a).String())
+	t.Logf("%v", reflect.TypeOf(a).Kind().String())
+
+	t.Logf("%v, %v", a, reflect.TypeOf(a))
+	v := a.(map[string]any)["name"]
+	t.Logf("%v", v)
+
+	t.Logf("%v", strings.Repeat("-", 20))
+	//IterMap(m)
+}
+func IterMap(m map[string]any) {
+	for k, v := range m {
+		if reflect.TypeOf(v).Kind() == reflect.TypeOf(map[string]any{}).Kind() {
+			IterMap(v.(map[string]any))
+		} else {
+			log.Println(k, " -> ", v)
 		}
 	}
 }
