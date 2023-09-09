@@ -138,7 +138,7 @@ func TestMap(t *testing.T) {
 	m["l2"] = l2
 	m["l3"] = l3
 
-	a := m["l1"]
+	/*a := m["l1"]
 	t.Logf("%v", strings.Repeat("-", 20))
 	t.Logf("%v type: %v, kind: %v", a, reflect.TypeOf(a), reflect.TypeOf(a).Kind())
 	t.Logf("name: %v, String: %v", reflect.TypeOf(a).Name(), reflect.TypeOf(a).String())
@@ -148,8 +148,20 @@ func TestMap(t *testing.T) {
 	v := a.(map[string]any)["name"]
 	t.Logf("%v", v)
 
+	t.Logf("%v", strings.Repeat("-", 20))*/
+	IterMap(m)
+
+	/*v := FindMap(m, "address")
+	t.Logf("%v", v)
 	t.Logf("%v", strings.Repeat("-", 20))
-	//IterMap(m)
+	if v, ok := m["l1"]; ok {
+		t.Logf("%v", v)
+	} else {
+		t.Logf("%v", "未找到")
+	}
+	t.Logf("%v", strings.Repeat("-", 20))
+	val := RGetMapVal(m, "address")
+	t.Logf("%v", val)*/
 }
 func IterMap(m map[string]any) {
 	for k, v := range m {
@@ -159,4 +171,11 @@ func IterMap(m map[string]any) {
 			log.Println(k, " -> ", v)
 		}
 	}
+}
+
+func TestSlice(t *testing.T) {
+	var lst []any
+	t.Logf("%v, %v", len(lst), cap(lst))
+	lst2 := make([]any, 10, 20)
+	t.Logf("%v, %v", len(lst2), cap(lst2))
 }

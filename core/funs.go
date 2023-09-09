@@ -62,7 +62,7 @@ func StringKeyToVal(mp map[string]any, key any) map[string]any {
 	for k, v := range mp {
 		nav += k
 		nav += "/"
-		if reflect.TypeOf(v).Kind() == reflect.TypeOf(map[string]any{}).Kind() {
+		if reflect.TypeOf(v).Kind() == reflect.TypeOf(mp).Kind() {
 			StringKeyToVal(v.(map[string]any), key)
 			nav = ""
 		} else {
@@ -77,7 +77,7 @@ func StringKeyToVal(mp map[string]any, key any) map[string]any {
 
 func IteratorMap(mp map[string]any) {
 	for k, v := range mp {
-		if reflect.TypeOf(v).Kind() == reflect.TypeOf(map[string]any{}).Kind() {
+		if reflect.TypeOf(v).Kind() == reflect.TypeOf(mp).Kind() {
 			IteratorMap(v.(map[string]any))
 		} else {
 			log.Println(k, " -> ", v)
@@ -85,9 +85,46 @@ func IteratorMap(mp map[string]any) {
 	}
 }
 
-func FindMap(mp map[string]any) any {
-	var re any
+func FindMap(mp map[string]any, tgKey string) []any {
+	//var re []any
+	re := make([]any, 0)
+	for k, v := range mp {
+		if reflect.TypeOf(v).Kind() == reflect.TypeOf(mp).Kind() {
+			if rv := FindMap(v.(map[string]any), tgKey); rv != nil && len(rv) != 0 {
+				re = append(re, rv)
+			}
+		} else {
+			if strings.EqualFold(k, tgKey) {
+				log.Println("找到目标 ", v)
+				re = append(re, v)
+			}
+		}
+	}
+	return re
+}
 
+// GetMapVal 如果存在key就返回值
+func GetMapVal[K string | int, V any](mp map[K]V, key K) any {
+	var re any
+	if v, ok := mp[key]; ok {
+		re = v
+	}
+	return re
+}
+
+func RGetMapVal(mp map[string]any, key string) []any {
+	var re []any
+	for k, v := range mp {
+		if reflect.TypeOf(v).Kind() == reflect.TypeOf(mp).Kind() {
+			if r := RGetMapVal(v.(map[string]any), key); r != nil && len(r) != 0 {
+				re = append(re, RGetMapVal(v.(map[string]any), key))
+			}
+		} else {
+			if strings.EqualFold(k, key) {
+				re = append(re, v)
+			}
+		}
+	}
 	return re
 }
 
