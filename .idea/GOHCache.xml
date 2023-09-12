@@ -24,6 +24,13 @@
             </set>
           </value>
         </entry>
+        <entry key="Log">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/log/log.go" />
+            </set>
+          </value>
+        </entry>
         <entry key="ViperUtil">
           <value>
             <set>
@@ -111,7 +118,7 @@
         <entry key="file://$PROJECT_DIR$/core/viperUtil.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1694529334977" />
+              <option name="lastModified" value="1694530690567" />
               <option name="schema">
                 <list>
                   <option value="ViperUtil" />
@@ -123,7 +130,7 @@
         <entry key="file://$PROJECT_DIR$/core/viperUtil_test.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1694528760371" />
+              <option name="lastModified" value="1694532398271" />
             </ScannedPath>
           </value>
         </entry>
@@ -137,7 +144,12 @@
         <entry key="file://$PROJECT_DIR$/log/log.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1694060074481" />
+              <option name="lastModified" value="1694534879033" />
+              <option name="schema">
+                <list>
+                  <option value="Log" />
+                </list>
+              </option>
             </ScannedPath>
           </value>
         </entry>
@@ -181,6 +193,7 @@
         <entry key="index_controller" value="IndexController" />
         <entry key="index_mid" value="IndexMid" />
         <entry key="jwt" value="Jwt" />
+        <entry key="log" value="Log" />
         <entry key="viper_util" value="ViperUtil" />
       </map>
     </option>

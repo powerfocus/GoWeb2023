@@ -2,6 +2,7 @@ package core
 
 import (
 	"github.com/spf13/viper"
+	pyLog "gweb/log"
 	"log"
 	"path/filepath"
 	"testing"
@@ -40,4 +41,9 @@ func TestViperUtil_Get(t *testing.T) {
 	viperUtil := NewViperUtil()
 	url := viperUtil.Get("goWeb.dataSource.url")
 	t.Logf("%v", url)
+}
+
+func TestLogrus(t *testing.T) {
+	lg := pyLog.NewLog()
+	lg.Log.Info("hello world.")
 }

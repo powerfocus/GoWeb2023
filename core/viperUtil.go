@@ -26,6 +26,7 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
+	// 设置配置文件加载路径
 	configPaths = append(configPaths, ".")
 	configPaths = append(configPaths, "./config")
 	configPaths = append(configPaths, absDir)
