@@ -24,6 +24,13 @@
             </set>
           </value>
         </entry>
+        <entry key="ViperUtil">
+          <value>
+            <set>
+              <option value="file://$PROJECT_DIR$/core/viperUtil.go" />
+            </set>
+          </value>
+        </entry>
       </map>
     </option>
     <option name="scannedPathMapping">
@@ -50,14 +57,14 @@
         <entry key="file://$PROJECT_DIR$/core/db_test.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1694260611526" />
+              <option name="lastModified" value="1694490624198" />
             </ScannedPath>
           </value>
         </entry>
         <entry key="file://$PROJECT_DIR$/core/funs.go">
           <value>
             <ScannedPath>
-              <option name="lastModified" value="1694260894456" />
+              <option name="lastModified" value="1694261294802" />
             </ScannedPath>
           </value>
         </entry>
@@ -98,6 +105,32 @@
           <value>
             <ScannedPath>
               <option name="lastModified" value="1694060074477" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/core/viperUtil.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1694529334977" />
+              <option name="schema">
+                <list>
+                  <option value="ViperUtil" />
+                </list>
+              </option>
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/core/viperUtil_test.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1694528760371" />
+            </ScannedPath>
+          </value>
+        </entry>
+        <entry key="file://$PROJECT_DIR$/file/main.go">
+          <value>
+            <ScannedPath>
+              <option name="lastModified" value="1694490482947" />
             </ScannedPath>
           </value>
         </entry>
@@ -148,8 +181,9 @@
         <entry key="index_controller" value="IndexController" />
         <entry key="index_mid" value="IndexMid" />
         <entry key="jwt" value="Jwt" />
+        <entry key="viper_util" value="ViperUtil" />
       </map>
     </option>
-    <option name="lastTimeChecked" value="1694247623916" />
+    <option name="lastTimeChecked" value="1694490213575" />
   </component>
 </project>

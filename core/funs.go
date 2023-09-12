@@ -133,3 +133,12 @@ func CleanMap[K string | int, V any](mp map[K]V) {
 		delete(mp, k)
 	}
 }
+func IterMap(mp map[string]any) {
+	for k, v := range mp {
+		if reflect.TypeOf(v).Kind() == reflect.TypeOf(mp).Kind() {
+			IterMap(v.(map[string]any))
+		} else {
+			log.Println(k, " -> ", v)
+		}
+	}
+}

@@ -2,9 +2,11 @@ package core
 
 import (
 	"bufio"
+	"github.com/spf13/viper"
 	"gopkg.in/yaml.v3"
 	"gweb/log"
 	"io"
+	"io/fs"
 	"os"
 	"path/filepath"
 	"reflect"
@@ -149,9 +151,9 @@ func TestMap(t *testing.T) {
 	t.Logf("%v", v)
 
 	t.Logf("%v", strings.Repeat("-", 20))*/
-	IterMap(m)
+	//IterMap(m)
 
-	/*v := FindMap(m, "address")
+	v := FindMap(m, "address")
 	t.Logf("%v", v)
 	t.Logf("%v", strings.Repeat("-", 20))
 	if v, ok := m["l1"]; ok {
@@ -161,16 +163,7 @@ func TestMap(t *testing.T) {
 	}
 	t.Logf("%v", strings.Repeat("-", 20))
 	val := RGetMapVal(m, "address")
-	t.Logf("%v", val)*/
-}
-func IterMap(m map[string]any) {
-	for k, v := range m {
-		if reflect.TypeOf(v).Kind() == reflect.TypeOf(map[string]any{}).Kind() {
-			IterMap(v.(map[string]any))
-		} else {
-			log.Println(k, " -> ", v)
-		}
-	}
+	t.Logf("%v", val)
 }
 
 func TestSlice(t *testing.T) {
@@ -178,4 +171,65 @@ func TestSlice(t *testing.T) {
 	t.Logf("%v, %v", len(lst), cap(lst))
 	lst2 := make([]any, 10, 20)
 	t.Logf("%v, %v", len(lst2), cap(lst2))
+}
+
+func TestPathWalk(t *testing.T) {
+	dir, err := os.ReadDir("C:\\Users\\Administrator\\Documents\\codes\\gin")
+	if err != nil {
+		panic(err)
+	}
+	for _, file := range dir {
+		if file.IsDir() {
+			t.Logf("[%v]", file.Name())
+		} else {
+			t.Logf("%v", file.Name())
+		}
+	}
+}
+
+func TestFilePath(t *testing.T) {
+	/*if dir, err := filepath.Abs("."); err != nil {
+		panic(err)
+	} else {
+		t.Logf("%v", dir)
+	}*/
+	err := filepath.Walk("C:\\Users\\Administrator\\Documents\\codes\\gin", func(p string, info fs.FileInfo, err error) error {
+		stat, err := os.Stat(p)
+		if err != nil {
+			panic(err)
+		}
+		if stat.IsDir() {
+			t.Logf("[%v]", filepath.Base(p))
+		} else {
+			t.Logf("%v", filepath.Base(p))
+		}
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+}
+
+func TestViper(t *testing.T) {
+	viper.SetConfigName("application")
+	viper.SetConfigType("yaml")
+	viper.AddConfigPath("C:\\Users\\Administrator\\GolandProjects\\gweb\\")
+	dir, _ := os.Getwd()
+	viper.AddConfigPath(dir)
+	viper.AddConfigPath(".")
+	err := viper.ReadInConfig()
+	if err != nil {
+		panic(err)
+	}
+	v := viper.Get("goWeb.dataSource.url")
+	t.Logf("%v", v)
+}
+
+func TestF1(t *testing.T) {
+	file, err := os.OpenFile("application1.yml", os.O_CREATE, 0777)
+	if err != nil {
+		t.Logf("%s %v", "打开文件时错误 ", err)
+	}
+	file.WriteString("hello world")
+	t.Logf("%v", file.Name())
 }

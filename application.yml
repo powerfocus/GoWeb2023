@@ -1,5 +1,5 @@
 goWeb:
-  datasource:
+  dataSource:
     url: py:123@tcp(localhost:3306)/gorm?charset=utf8&TimeParsed=true&loc=Local
     host: localhost:3306
   mysql:
